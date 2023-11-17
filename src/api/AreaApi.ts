@@ -1,8 +1,8 @@
 import { ApiManager } from "./ApiManager";
 
-export const findAllArea: (token: string) => Promise<string[] | undefined > = async (token) => {
+export const findAllArea: (token: string) => Promise<any[] | undefined > = async (token) => {
     try {
-        const result: string[] = await ApiManager(`/area`, {
+        const result: any[] = await ApiManager(`/area`, {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${token}`
@@ -26,6 +26,6 @@ export const findOneArea: (token: string, id: string) => Promise<string | undefi
 
         return result
     } catch (error) {
-        console.log('Error While Find All Area ', error)
+        console.log('Error While Find One Area ', error)
     }
 }
