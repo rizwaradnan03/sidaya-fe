@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Create: React.FC = () => {
   const [inputText, setInputText] = useState<string>('');
@@ -28,13 +29,12 @@ const Create: React.FC = () => {
             onChange={handleInputChange}
           />
         </div>
-        <button
-          type="button"
-          className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+        <Link to={'/admin/activity/detail/'}
+          className="flex justify-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
           onClick={handleButtonClick}
         >
           Submit
-        </button>
+        </Link>
       </div>
     </div>
   );
