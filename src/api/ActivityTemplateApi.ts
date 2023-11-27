@@ -3,6 +3,7 @@ import { ApiManager } from "./ApiManager";
 const token = localStorage.getItem("AccessToken")
 
 export const findAllActivityTemplate: () => Promise<any[] | undefined> = async () => {
+  console.log('tokennnnnnnnnnnnnnn ', token)
   try {
     const result: any[] = await ApiManager(`/activity-template`, {
       method: "GET",

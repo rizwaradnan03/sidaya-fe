@@ -35,10 +35,10 @@ const Index: React.FC = () => {
         console.log(response)
         if(response.status == 200){
             SweetAlert({icon: 'success', title: 'Berhasil Menghapus', text: 'Selamat Anda Berhasil Menghapus Activity Template!'})
-            fetchData()
         }else{
             SweetAlert({icon: 'error', title: 'Gagal Menghapus', text: 'Maaf Anda Gagal Menghapus Activity Template!'})
         }
+        fetchActivityTemplates()
     } catch (error) {
         console.log('Error While Deleting Data ', error)
     }
