@@ -77,7 +77,7 @@ export const deleteActivityTemplate: (
     id: string
 ) => Promise<string | undefined> = async (id) => {
     try {
-        const result: string = await ApiManager(`/activity-template/${id}`, {
+        const result: string = await ApiManager(`/activity-template/delete/${id}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`

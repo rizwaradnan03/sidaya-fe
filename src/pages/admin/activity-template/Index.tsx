@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { findAllActivityTemplate } from "../../../api/ActivityTemplateApi";
+import { deleteActivityTemplate, findAllActivityTemplate } from "../../../api/ActivityTemplateApi";
 import { FaEdit } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
+import SweetAlert from "../../../components/SweetAlert";
 
 const Index: React.FC = () => {
   const [activityTemplates, setActivityTemplates] = useState<any[]>([]);
@@ -17,24 +18,43 @@ const Index: React.FC = () => {
   };
 
   const fetchData = () => {
-    fetchActivityTemplates();
+    try {
+        fetchActivityTemplates();
+    } catch (error) {
+        console.log('Error While Fetch Data ', error)
+    }
   };
 
   useEffect(() => {
     fetchData();
   }, []);
 
+  const handleDelete = async (id) => {
+    try {
+        const response = await deleteActivityTemplate(id)
+        console.log(response)
+        if(response.status == 200){
+            SweetAlert({icon: 'success', title: 'Berhasil Menghapus', text: 'Selamat Anda Berhasil Menghapus Activity Template!'})
+            fetchData()
+        }else{
+            SweetAlert({icon: 'error', title: 'Gagal Menghapus', text: 'Maaf Anda Gagal Menghapus Activity Template!'})
+        }
+    } catch (error) {
+        console.log('Error While Deleting Data ', error)
+    }
+  }
+
   return (
     <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
       <div className="max-w-full overflow-x-auto">
         <div>
-          <h1 className=" font-thin text-5xl mt-6">Template Page</h1>
+          <h1 className=" font-thin text-5xl mt-6">Halaman Activity Template</h1>
           <div className="flex justify-end items-center mt-5">
             <Link
               to={"/admin/activity-template/create/"}
               className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             >
-              Create template
+              Buat Template
             </Link>
           </div>
         </div>
@@ -70,7 +90,7 @@ const Index: React.FC = () => {
                   <Link to={"/admin/activity-template/edit/" + item.id} className="bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 focus:outline-none dark:focus:ring-yellow-800">
                     <FaEdit className="white-icon" />
                   </Link>
-                  <button className="bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800" onClick={() => handleDelete(item.id)}>
+                  <button type="button" className="bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800" onClick={() => handleDelete(item.id)}>
                     <AiFillDelete className="white-icon" />
                   </button>
                 </td>
