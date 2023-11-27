@@ -15,8 +15,8 @@ const Sidebar: React.FC = () => {
 
   const Menus: { title: string; src: string; link: string; gap?: boolean }[] = [
     { title: "Dashboard", src: chartFill, link: "/admin/dashboard" },
-    { title: "Search Template", src: search, gap: true, link: "/admin/activity-template" },
-    { title: "Accounts User", src: user, link: "/admin/accounts-user" },
+    { title: "Activity Template", src: search, gap: true, link: "/admin/activity-template" },
+    { title: "Area", src: user, link: "/admin/area" },
     { title: "Problem", src: chart, link: "/admin/problem" },
     { title: "Log Out", src: folder, gap: true, link: "/admin/logout" },
   ];

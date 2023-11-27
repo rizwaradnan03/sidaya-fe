@@ -1,6 +1,8 @@
 import { ApiManager } from "./ApiManager";
 
-export const findAllArea: (token: string) => Promise<any[] | undefined > = async (token) => {
+const token = localStorage.getItem("AccessToken")
+
+export const findAllArea: () => Promise<any[] | undefined > = async () => {
     try {
         const result: any[] = await ApiManager(`/area`, {
             method: "GET",
@@ -15,9 +17,9 @@ export const findAllArea: (token: string) => Promise<any[] | undefined > = async
     }
 }
 
-export const findOneArea: (token: string, id: string) => Promise<string | undefined> = async (token,id) => {
+export const findOneArea: (id: string) => Promise<string | undefined> = async (id) => {
     try {
-        const result: string = await ApiManager(`/area/${id}`, {
+        const result: string = await ApiManager(`/area/find${id}`, {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${token}`

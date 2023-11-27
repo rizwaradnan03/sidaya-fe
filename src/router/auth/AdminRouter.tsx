@@ -3,6 +3,7 @@ import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import Dashboard from "../../pages/admin/Dashboard";
 import TemplateAdmin from "../../layouts/admin/TemplateAdmin";
 import ActivityRouter from "../ActivityTemplateRouter";
+import AreaRouter from "../AreaRouter";
 
 const AdminRouter: React.FC = () => {
 
@@ -36,6 +37,7 @@ const AdminRouter: React.FC = () => {
 
           {/* activity routing */}
           <Route path="/activity-template/*" element={<ActivityRouter />} />
+          <Route path="/area/*" element={<AreaRouter />} />
 
           <Route path="*" element={<Navigate to={"/admin/dashboard"} />} />
         </Routes>

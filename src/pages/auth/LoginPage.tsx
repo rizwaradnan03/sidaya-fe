@@ -1,6 +1,6 @@
-import { Button, Label, TextInput } from "flowbite-react";
+import { Label, TextInput } from "flowbite-react";
 import React, { useEffect, useState } from "react";
-import { jwtDecode, JwtPayload } from "jwt-decode"; // Import JwtPayload from jwt-decode
+import { jwtDecode, JwtPayload } from "jwt-decode"; 
 import { loginUser } from "../../api/auth/AuthApi";
 import SweetAlert from "../../components/SweetAlert";
 import { useNavigate } from "react-router";
@@ -28,7 +28,7 @@ const LoginPage: React.FC = () => {
         if(role == "ADMIN"){
           return navigate('/admin/dashboard')
         }else if(role == "USER"){
-          return navigate('/admin/dashboard')
+          return navigate('/client/dashboard')
         }
       }
 

@@ -1,10 +1,11 @@
-import React, { useState } from "react";
-import { createActivityTemplate } from "../../../api/ActivityTemplateApi";
+import React, { useEffect, useState } from "react";
+import { createActivityTemplate, findOneActivityTemplate, updateActivityTemplate } from "../../../api/ActivityTemplateApi";
 import SweetAlert from "../../../components/SweetAlert";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
-const Create: React.FC = () => {
+const Edit: React.FC = () => {
   const [name, setInputName] = useState<string>("");
+  const {id} = useParams()
 
   const navigate = useNavigate();
 
@@ -12,16 +13,30 @@ const Create: React.FC = () => {
     setInputName(e.target.value);
   };
 
+  const handleFetchActivityTemplate = async () => {
+    try {
+        const response = await findOneActivityTemplate(id)
+        // console.log('responseeee ', response)
+        setInputName(response.data.activityTemplate.name)
+    } catch (error) {
+        console.log('Error While Fetching One Activity Template ', error)
+    }
+  }
+
+  useEffect(() => {
+    handleFetchActivityTemplate()
+  }, [])
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await createActivityTemplate({ name });
-
-      if (response.status === 201) {
+      const response = await updateActivityTemplate(id,{ name });
+        console.log(response.status)
+      if (response.status === 200) {
         SweetAlert({
           icon: "success",
-          title: "Berhasil Membuat",
-          text: "Selamat Anda Berhasil Membuat Activity Template!",
+          title: "Berhasil Mengubah",
+          text: "Selamat Anda Berhasil Mengubah Activity Template!",
         });
         setTimeout(() => {
           navigate("/admin/activity-template");
@@ -29,12 +44,12 @@ const Create: React.FC = () => {
       } else {
         SweetAlert({
           icon: "error",
-          title: "Gagal Membuat",
-          text: "Maaf Anda Gagal Membuat Activity Template!",
+          title: "Gagal Mengubah",
+          text: "Maaf Anda Gagal Mengubah Activity Template!",
         });
       }
     } catch (error) {
-      console.log("Error While Creating Activity Template ", error);
+      console.log("Error While Updating Activity Template ", error);
     }
   };
 
@@ -66,7 +81,7 @@ const Create: React.FC = () => {
               type="submit"
               className="flex justify-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             >
-              Tambah Template
+              Ubah Template
             </button>
           </form>
         </div>
@@ -75,4 +90,4 @@ const Create: React.FC = () => {
   );
 };
 
-export default Create;
+export default Edit;
