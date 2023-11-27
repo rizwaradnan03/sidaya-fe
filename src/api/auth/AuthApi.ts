@@ -3,7 +3,7 @@ import { ApiManager } from "../ApiManager";
 export const loginUser: (
   username: string,
   password: string
-) => Promise<{ token: string } | undefined> = async (username, password) => {
+) => Promise<{ token: any } | undefined> = async (username, password) => {
   try {
     const result = await ApiManager(`/auth/login`, {
       method: "POST",
@@ -15,8 +15,8 @@ export const loginUser: (
         password: password,
       },
     });
-
-    return {token: result.data}
+    // console.log(result)
+    return {token: result.data.access_token}
   } catch (error) {
     console.log("Error While Login ", error);
   }

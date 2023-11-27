@@ -1,0 +1,3 @@
+###
+GET http://147.139.173.249:3004/api/activity-template/find/e52f6099-f4ae-4435-8080-e0ad30cb03d0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoicml6d2FyIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzAxMDYxMTc2LCJleHAiOjE3MDExNDc1NzZ9.IYwTU_N6vCZvx9A1i8XIClGimULW003RPdk2qpWr3y4

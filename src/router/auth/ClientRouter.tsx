@@ -1,7 +1,7 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import Dashboard from "../pages/client/Dashboard";
-import TemplateClient from "../layouts/client/TemplateClient";
+import Dashboard from "../../pages/client/Dashboard";
+import TemplateClient from "../../layouts/client/TemplateClient";
 
 const ClientRouter: React.FC = () => {
   return (

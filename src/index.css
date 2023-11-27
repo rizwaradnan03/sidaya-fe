@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.white-icon{
+    color: white
+}
+
+.black-icon{
+    color: black
+}
+
+.yellow-icon{
+    color: yellow
+}

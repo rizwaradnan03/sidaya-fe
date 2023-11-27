@@ -1,10 +1,11 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const FormLayout: React.FC = () => {
+const DetailForm: React.FC<{name: string}> = ({name}) => {
 
+  console.log('nameeeeeeeeee', name)
   const Navigate = useNavigate();
 
   const handleNextClick = () => {
@@ -117,4 +118,4 @@ const FormLayout: React.FC = () => {
   );
 };
 
-export default FormLayout;
+export default DetailForm;

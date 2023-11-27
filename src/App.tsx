@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "./pages/auth/LoginPage";
-import AdminRouter from "./router/AdminRouter";
-import ClientRouter from "./router/ClientRouter";
+import AdminRouter from "./router/auth/AdminRouter";
+import ClientRouter from "./router/auth/ClientRouter";
 
 const App: React.FC = () => {
   return (

@@ -1,8 +1,8 @@
 import { ApiManager } from "./ApiManager";
 
-export const findAllActivityTemplate: (
-  token: string
-) => Promise<any[] | undefined> = async (token) => {
+const token = localStorage.getItem("AccessToken")
+
+export const findAllActivityTemplate: () => Promise<any[] | undefined> = async () => {
   try {
     const result: any[] = await ApiManager(`/activity-template`, {
       method: "GET",
@@ -18,11 +18,10 @@ export const findAllActivityTemplate: (
 };
 
 export const findOneActivityTemplate: (
-  token: string,
   id: string
-) => Promise<string | undefined> = async (token, id) => {
+) => Promise<string> = async (id) => {
   try {
-    const result: string = await ApiManager(`/activity-template/${id}`, {
+    const result = await ApiManager(`/activity-template/find/${id}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -36,17 +35,16 @@ export const findOneActivityTemplate: (
 };
 
 export const createActivityTemplate: (
-  token: string,
   data: { name: string }
-) => Promise<string | undefined> = async (token, data) => {
+) => Promise<string | undefined> = async (data) => {
   try {
-    const result: string = await ApiManager(`/activity-template`, {
+    const result: any = await ApiManager(`/activity-template/create`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      data: data,
+      data: data
     });
 
     return result;
@@ -56,12 +54,11 @@ export const createActivityTemplate: (
 };
 
 export const updateActivityTemplate: (
-  token: string,
   id: string,
   data: { name: string }
-) => Promise<string | undefined> = async (token, id, data) => {
+) => Promise<string | undefined> = async (id, data) => {
   try {
-    const result: string = await ApiManager(`/activity-template/${id}`, {
+    const result: string = await ApiManager(`/activity-template/update/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -77,9 +74,8 @@ export const updateActivityTemplate: (
 };
 
 export const deleteActivityTemplate: (
-    token: string,
     id: string
-) => Promise<string | undefined> = async (token,id) => {
+) => Promise<string | undefined> = async (id) => {
     try {
         const result: string = await ApiManager(`/activity-template/${id}`, {
             method: "DELETE",
