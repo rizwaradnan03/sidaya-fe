@@ -21,20 +21,20 @@ const Create: React.FC = () => {
         SweetAlert({
           icon: "success",
           title: "Berhasil Membuat",
-          text: "Selamat Anda Berhasil Membuat Activity Template!",
+          text: "Selamat Anda Berhasil Membuat Area!",
         });
         setTimeout(() => {
-          navigate("/admin/activity-template");
+          navigate("/admin/area");
         }, 2000);
       } else {
         SweetAlert({
           icon: "error",
           title: "Gagal Membuat",
-          text: "Maaf Anda Gagal Membuat Activity Template!",
+          text: "Maaf Anda Gagal Membuat Area!",
         });
       }
     } catch (error) {
-      console.log("Error While Creating Activity Template ", error);
+      console.log("Error While Creating Area ", error);
     }
   };
 

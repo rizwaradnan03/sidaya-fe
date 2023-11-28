@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaEdit } from "react-icons/fa";
-import { AiFillDelete } from "react-icons/ai";
-import SweetAlert from "../../../components/SweetAlert";
 import { findAllArea } from "../../../api/AreaApi";
 
 const Index: React.FC = () => {
