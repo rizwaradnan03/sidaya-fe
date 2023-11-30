@@ -1,12 +1,12 @@
 import React from "react"
 import { Navigate, Route, Routes } from "react-router-dom"
-import Index from "../pages/admin/area/Index"
-import Create from "../pages/admin/area/Create"
+import Create from "../pages/admin/activity-detail/Create"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Edit from "../pages/admin/area/Edit"
+import Edit from "../pages/admin/activity-detail/Edit"
+import Index from "../pages/admin/activity-detail/Index";
 
-const AreaRouter: React.FC = () => {
+const ActivityDetailRouter: React.FC = () => {
   return (
     <>
       <Routes>
@@ -14,7 +14,7 @@ const AreaRouter: React.FC = () => {
         <Route path="/create" element={<Create />} />
         <Route path="/edit/:id" element={<Edit />} />
 
-        <Route path="*" element={<Navigate to={"/admin/area/"} />} />
+        <Route path="*" element={<Navigate to={"/admin/activity-detail/"} />} />
       </Routes>
       <ToastContainer/>
 
@@ -22,4 +22,4 @@ const AreaRouter: React.FC = () => {
   )
 }
 
-export default AreaRouter
+export default ActivityDetailRouter

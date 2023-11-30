@@ -6,7 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Edit from "../pages/admin/activity-template/Edit"
 
-const ActivityRouter: React.FC = () => {
+const ActivityTemplateRouter: React.FC = () => {
   return (
     <>
       <Routes>
@@ -22,4 +22,4 @@ const ActivityRouter: React.FC = () => {
   )
 }
 
-export default ActivityRouter
+export default ActivityTemplateRouter

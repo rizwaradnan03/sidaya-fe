@@ -17,7 +17,7 @@ const Edit: React.FC = () => {
     try {
         const response = await findOneActivityTemplate(id)
         // console.log('responseeee ', response)
-        setInputName(response.data.activityTemplate.name)
+        setInputName(response.data.data.activityTemplate.name)
     } catch (error) {
         console.log('Error While Fetching One Activity Template ', error)
     }

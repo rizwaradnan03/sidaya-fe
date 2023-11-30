@@ -31,3 +31,18 @@ export const findOneArea: (id: string) => Promise<string | undefined> = async (i
         console.log('Error While Find One Area ', error)
     }
 }
+
+export const createArea: (data: {name: string, capacity: number, feed: number, volume: number, weight: number, }) => Promise<string | undefined> = async (id) => {
+    try {
+        const result: string = await ApiManager(`/area/find${id}`, {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+
+        return result
+    } catch (error) {
+        console.log('Error While Find One Area ', error)
+    }
+}
