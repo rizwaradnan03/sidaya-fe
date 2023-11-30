@@ -1,22 +1,16 @@
 import React, { useEffect, useState } from "react";
 import SweetAlert from "../../../components/SweetAlert";
 import { useNavigate } from "react-router";
+import { useParams } from "react-router-dom";
 import {
   createActivityDetail,
 } from "../../../api/ActivityDetailApi";
-import { findAllActivityTemplate } from "../../../api/ActivityTemplateApi";
-import ActivityTemplateInterface from "../../../interface/ActivityTemplateInterface";
 
 const Create: React.FC = () => {
-  //form create
+  const {activityTemplateId} = useParams()
   const [name, setInputName] = useState<string>("");
   const [description, setDescription] = useState<string>("");
-  const [activityTemplateId, setActivityTemplateId] = useState<string>("");
   const [time, setTime] = useState<string>("");
-
-  const [dataActivityTemplate, setDataActivityTemplate] = useState<
-    ActivityTemplateInterface[]
-  >([]);
 
   const navigate = useNavigate();
 
@@ -29,36 +23,9 @@ const Create: React.FC = () => {
     setDescription(e.target.value);
   };
 
-  const handleActivityTemplateInputChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setActivityTemplateId(e.target.value);
-  };
-
   const handleTimeInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTime(e.target.value);
   };
-
-  const handleFetchActivityTemplate = async () => {
-    try {
-      const response = await findAllActivityTemplate();
-      setDataActivityTemplate(response.data.data);
-    } catch (error) {
-      console.log("Error While Fetching Activity Detail ", error);
-    }
-  };
-
-  const fetchData = () => {
-    try {
-      handleFetchActivityTemplate();
-    } catch (error) {
-      console.log("Error While Fetching Data");
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -131,29 +98,6 @@ const Create: React.FC = () => {
                 value={description}
                 onChange={handleDescriptionInputChange}
               />
-            </div>
-            <div className="mb-4">
-              <label
-                htmlFor="textInput"
-                className="block text-2xl font-bold mb-4"
-              >
-                <h2>Template</h2>
-              </label>
-              <select
-                className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-blue-500"
-                value={activityTemplateId}
-                onChange={handleActivityTemplateInputChange}
-                required
-              >
-                <option key="#" value="#" disabled selected>
-                  --Pilih Template--
-                </option>
-                {dataActivityTemplate.map((item, index) => (
-                  <option key={index + 1} value={item.id}>
-                    {item.name}
-                  </option>
-                ))}
-              </select>
             </div>
             <div className="mb-4">
               <label

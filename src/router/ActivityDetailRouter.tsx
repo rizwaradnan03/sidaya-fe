@@ -11,7 +11,7 @@ const ActivityDetailRouter: React.FC = () => {
     <>
       <Routes>
         <Route path="/" element={<Index />} />
-        <Route path="/create" element={<Create />} />
+        <Route path="/create/:activityTemplateId" element={<Create />} />
         <Route path="/edit/:id" element={<Edit />} />
 
         <Route path="*" element={<Navigate to={"/admin/activity-detail/"} />} />

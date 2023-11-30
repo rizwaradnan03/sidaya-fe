@@ -4,7 +4,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuY
 
 ###
 POST http://147.139.173.249:3004/api/activity-detail/create
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoicml6d2FyIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzAxMjI1NDMzLCJleHAiOjE3MDEzMTE4MzN9.pa8kPAdosTYT7pr7k5SmJqtkG207w8Hbaz89oubPwhA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoicml6d2FyIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzAxMzEzNDIyLCJleHAiOjE3MDEzOTk4MjJ9.s5HehqiZBIEvkF2DJBsYgYdn14N-6GVtxQjjsFYBejg
 Content-Type: application/json
 
 {
