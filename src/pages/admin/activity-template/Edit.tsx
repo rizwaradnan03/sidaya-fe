@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { createActivityTemplate, findOneActivityTemplate, updateActivityTemplate } from "../../../api/ActivityTemplateApi";
+import { findOneActivityTemplate, updateActivityTemplate } from "../../../api/ActivityTemplateApi";
 import SweetAlert from "../../../components/SweetAlert";
 import { useNavigate, useParams } from "react-router";
 
@@ -17,7 +17,7 @@ const Edit: React.FC = () => {
     try {
         const response = await findOneActivityTemplate(id)
         // console.log('responseeee ', response)
-        setInputName(response.data.activityTemplate.name)
+        setInputName(response.data.data.activityTemplate.name)
     } catch (error) {
         console.log('Error While Fetching One Activity Template ', error)
     }

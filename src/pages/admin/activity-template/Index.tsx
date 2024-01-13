@@ -11,7 +11,7 @@ const Index: React.FC = () => {
   const fetchActivityTemplates = async () => {
     try {
       const response = await findAllActivityTemplate();
-      setActivityTemplates(response.data);
+      setActivityTemplates(response.data.data);
     } catch (error) {
       console.log("Error While Fetching Activity Template ", error);
     }
@@ -35,10 +35,10 @@ const Index: React.FC = () => {
         console.log(response)
         if(response.status == 200){
             SweetAlert({icon: 'success', title: 'Berhasil Menghapus', text: 'Selamat Anda Berhasil Menghapus Activity Template!'})
+            fetchData()
         }else{
             SweetAlert({icon: 'error', title: 'Gagal Menghapus', text: 'Maaf Anda Gagal Menghapus Activity Template!'})
         }
-        fetchActivityTemplates()
     } catch (error) {
         console.log('Error While Deleting Data ', error)
     }
