@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { deleteActivityTemplate, findAllActivityTemplate } from "../../../api/ActivityTemplateApi";
+import {
+  deleteActivityTemplate,
+  findAllActivityTemplate,
+} from "../../../api/ActivityTemplateApi";
 import { FaEdit } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
 import SweetAlert from "../../../components/SweetAlert";
+import ActivityTemplateInterface from "../../../interface/ActivityTemplateInterface";
 
 const Index: React.FC = () => {
-  const [activityTemplates, setActivityTemplates] = useState<any[]>([]);
+  const [activityTemplates, setActivityTemplates] = useState<ActivityTemplateInterface[]>([]);
 
   const fetchActivityTemplates = async () => {
     try {
@@ -19,9 +23,9 @@ const Index: React.FC = () => {
 
   const fetchData = () => {
     try {
-        fetchActivityTemplates();
+      fetchActivityTemplates();
     } catch (error) {
-        console.log('Error While Fetch Data ', error)
+      console.log("Error While Fetch Data ", error);
     }
   };
 
@@ -31,6 +35,7 @@ const Index: React.FC = () => {
 
   const handleDelete = async (id) => {
     try {
+<<<<<<< HEAD
         const response = await deleteActivityTemplate(id)
         console.log(response)
         if(response.status == 200){
@@ -39,16 +44,36 @@ const Index: React.FC = () => {
         }else{
             SweetAlert({icon: 'error', title: 'Gagal Menghapus', text: 'Maaf Anda Gagal Menghapus Activity Template!'})
         }
+=======
+      const response = await deleteActivityTemplate(id);
+      console.log(response);
+      if (response.status == 200) {
+        SweetAlert({
+          icon: "success",
+          title: "Berhasil Menghapus",
+          text: "Selamat Anda Berhasil Menghapus Activity Template!",
+        });
+      } else {
+        SweetAlert({
+          icon: "error",
+          title: "Gagal Menghapus",
+          text: "Maaf Anda Gagal Menghapus Activity Template!",
+        });
+      }
+      fetchActivityTemplates();
+>>>>>>> 1ed24d788788cb75f02a726974f1544a9b964122
     } catch (error) {
-        console.log('Error While Deleting Data ', error)
+      console.log("Error While Deleting Data ", error);
     }
-  }
+  };
 
   return (
     <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
       <div className="max-w-full overflow-x-auto">
         <div>
-          <h1 className=" font-thin text-5xl mt-6">Halaman Activity Template</h1>
+          <h1 className="font-thin text-5xl mt-6">
+            Halaman Activity Template
+          </h1>
           <div className="flex justify-end items-center mt-5">
             <Link
               to={"/admin/activity-template/create/"}
@@ -87,10 +112,17 @@ const Index: React.FC = () => {
                   </h1>
                 </td>
                 <td className="border-b flex gap-x-4 border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
-                  <Link to={"/admin/activity-template/edit/" + item.id} className="bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 focus:outline-none dark:focus:ring-yellow-800">
+                  <Link
+                    to={"/admin/activity-template/edit/" + item.id}
+                    className="bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 focus:outline-none dark:focus:ring-yellow-800"
+                  >
                     <FaEdit className="white-icon" />
                   </Link>
-                  <button type="button" className="bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800" onClick={() => handleDelete(item.id)}>
+                  <button
+                    type="button"
+                    className="bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800"
+                    onClick={() => handleDelete(item.id)}
+                  >
                     <AiFillDelete className="white-icon" />
                   </button>
                 </td>

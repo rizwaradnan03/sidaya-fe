@@ -16,7 +16,7 @@ const Sidebar: React.FC = () => {
   const Menus: { title: string; src: string; link: string; gap?: boolean }[] = [
     { title: "Dashboard", src: chartFill, link: "/admin/dashboard" },
     { title: "Activity Template", src: search, gap: true, link: "/admin/activity-template" },
-    { title: "Area", src: user, link: "/admin/area" },
+    { title: "Activity Detail", src: user, link: "/admin/activity-detail" },
     { title: "Problem", src: chart, link: "/admin/problem" },
     { title: "Log Out", src: folder, gap: true, link: "/admin/logout" },
   ];
@@ -42,13 +42,13 @@ const Sidebar: React.FC = () => {
               className={`cursor-pointer duration-500 ${open ? "rotate-[360deg]" : ""}`}
               alt="Logo"
             />
-            <h1
+            <div
               className={`text-white origin-left font-medium text-xl duration-200 ${
                 !open ? "scale-0" : ""
               }`}
             >
               <h1 className="ml-5">Sidaya</h1>
-            </h1>
+            </div>
           </Link>
         </div>
         <ul className="pt-6">

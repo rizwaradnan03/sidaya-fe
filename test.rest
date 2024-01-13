@@ -1,3 +1,20 @@
 ###
 GET http://147.139.173.249:3004/api/activity-template/
-Authorization: Bearer eeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoicml6d2FyIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzAxMDc2MTYxLCJleHAiOjE3MDExNjI1NjF9.RnVyVuJEUCu3rzjU8qhW5gTqoFXSG314uA4Tcmhn-mw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoicml6d2FyIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzAxMjI1NDMzLCJleHAiOjE3MDEzMTE4MzN9.pa8kPAdosTYT7pr7k5SmJqtkG207w8Hbaz89oubPwhA
+
+###
+POST http://147.139.173.249:3004/api/activity-detail/create
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoicml6d2FyIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzAxMzEzNDIyLCJleHAiOjE3MDEzOTk4MjJ9.s5HehqiZBIEvkF2DJBsYgYdn14N-6GVtxQjjsFYBejg
+Content-Type: application/json
+
+{
+    "name": "asdwfw",
+    "description": "djiwfnege",
+    "time": "06",
+    "activityTemplateId": "f0f79590-4a26-4232-824e-e40aff381d4f",
+    "turn": "1"
+}
+
+###
+GET http://147.139.173.249:3004/api/activity-detail/find-all/f0f79590-4a26-4232-824e-e40aff381d4f
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoicml6d2FyIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzAxMjI1NDMzLCJleHAiOjE3MDEzMTE4MzN9.pa8kPAdosTYT7pr7k5SmJqtkG207w8Hbaz89oubPwhA
